@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">User Registrations</string>
+    <!--TEXT CREATION USER-->
+    <string name="user_name">User name</string>
+    <string name="user_email">User email</string>
+    <string name="user_password">User password</string>
+    <string name="user_role">User role</string>
+    <string name="user_date_created">Creation date</string>
+    <string name="user_date_update">Update date</string>
+    <string name="user_registration">User Registration</string>
+    <string name="user_history">Created user history</string>
+    <string name="user_history_empty">User history is empty</string>
+    <string name="return_user_history">Return user history</string>
+    <string name="create_user">Create user</string>
+    <string name="ok_message">OK</string>
+    <string name="cancel_message">Cancel</string>
+    <string name="created_user">Created user</string>
+    <string name="update_user">Update user</string>
+    <string name="created_user_registered">User registered and created successfully</string>
+    <string name="update_user_registered">User update successfully</string>
+    <!--TEXT CREATION USER-->
+    <string name="error">Error</string>
+    <string name="error_data">Error you must complete all the data</string>
+    <string name="error_data_not_password">Error you must complete all the data except the password which is optional</string>
+</resources>
