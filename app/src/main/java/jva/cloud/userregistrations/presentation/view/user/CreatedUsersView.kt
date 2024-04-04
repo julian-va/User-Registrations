@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -61,18 +62,19 @@ fun CreatedUsersView(
                             navigateToUpdate(it.id.toString(), it.name, it.email, it.role)
                         })
                 }
+                item {
+                    NavigateToRegisterButton(
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .fillMaxWidth(),
+                        navigateToRegister = { navigateToRegister() })
+                }
             }
             Spacer(modifier = Modifier.padding(20.dp))
         } else {
-            UserEmpty()
+            UserEmpty { navigateToRegister() }
         }
-        Button(
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(10.dp),
-            onClick = { navigateToRegister() }) {
-            Text(text = "return to user creation")
-        }
+
         if (createdUsersViewModel.state.value.progressIndicator) {
 
             CircularProgressIndicator(
@@ -152,7 +154,7 @@ fun TextValueCard(
 }
 
 @Composable
-fun UserEmpty(): Unit {
+fun UserEmpty(navigateToRegister: () -> Unit): Unit {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -172,7 +174,18 @@ fun UserEmpty(): Unit {
             modifier = Modifier
                 .size(50.dp),
             imageVector = Icons.Default.Person,
-            contentDescription = ""
+            contentDescription = stringResource(R.string.user_history_empty)
         )
+        NavigateToRegisterButton(
+            modifier = Modifier.padding(10.dp),
+            navigateToRegister = { navigateToRegister() })
+    }
+}
+
+@Composable
+private fun NavigateToRegisterButton(modifier: Modifier, navigateToRegister: () -> Unit): Unit {
+    Button(modifier = modifier,
+        onClick = { navigateToRegister() }) {
+        Text(text = "return to user creation")
     }
 }
